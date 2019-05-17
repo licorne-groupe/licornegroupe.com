@@ -1,11 +1,21 @@
 import ACTIONS from "./action";
 import _ from "lodash";
+import { createStore, combineReducers } from 'redux';
+import { polyglotReducer } from 'redux-polyglot';
+
+const rootReducer = combineReducers({
+    // ...yourReducers,
+    polyglot: polyglotReducer,
+});
+
+const store = createStore(rootReducer, {});
+
 
 const defaultState = {
   items: []
 };
 
-const todoReducer = (state = defaultState, action) => {
+const taskReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ACTIONS.Types.CREATE_ITEM: {
       console.log(action);
